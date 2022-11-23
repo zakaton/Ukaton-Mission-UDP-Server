@@ -104,3 +104,6 @@ dist
 .tern-port
 
 TODO.txt
+sec
+.vscode
+.DS_Store

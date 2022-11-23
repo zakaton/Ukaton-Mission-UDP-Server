@@ -1,0 +1,11 @@
+{
+  "name": "Ukaton-Mission-UDP-Server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zakaton/Ukaton-Mission-UDP-Server.git",
+  "author": "Zack <zack@ukaton.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.11.0"
+  }
+}
