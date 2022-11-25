@@ -6,6 +6,7 @@
   "author": "Zack <zack@ukaton.com>",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.21",
     "ws": "^8.11.0"
   }
 }
