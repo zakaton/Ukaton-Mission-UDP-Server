@@ -1,7 +1,7 @@
 const throttle = require("lodash/throttle");
 const buffer = require("buffer");
 
-let shouldLog = true;
+let shouldLog = false;
 const log = (...args) => {
   if (shouldLog) {
     console.log(...args);
