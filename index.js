@@ -19,8 +19,20 @@ WebSocketMessageTypeStrings.forEach((webSocketMessageTypeString, index) => {
   WebSocketMessageTypes[webSocketMessageTypeString] = index;
 });
 
-const WebSocketServer = require("ws");
-const wss = new WebSocketServer.Server({ port: 8080 });
+const { createServer } = require("https");
+const { readFileSync } = require("fs");
+const { WebSocketServer } = require("ws");
+
+const server = createServer({
+  cert: readFileSync(
+    "/Users/zakaton/Documents/Github/collaborative-quest-pro/sec/server.crt"
+  ),
+  key: readFileSync(
+    "/Users/zakaton/Documents/Github/collaborative-quest-pro/sec/server.key"
+  ),
+  passphrase: "12345",
+});
+const wss = new WebSocketServer({ server });
 
 wss.on("connection", (ws) => {
   log("new client connected");
@@ -99,6 +111,7 @@ wss.on("connection", (ws) => {
     Uint8Array.from([WebSocketMessageTypes.NUMBER_OF_DEVICES, HOSTS.length])
   );
 });
+server.listen(8080);
 log("The WebSocket server is running on port 8080");
 
 // UDP
