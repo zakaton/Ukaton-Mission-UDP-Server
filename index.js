@@ -112,7 +112,7 @@ wss.on("connection", (ws) => {
   );
 });
 server.listen(8080);
-log("The WebSocket server is running on port 8080");
+console.log("The WebSocket server is running on port 8080");
 
 // UDP
 const UDPMessageTypeStrings = [
@@ -282,5 +282,3 @@ function ping() {
   }, 1000);
 }
 ping();
-
-console.log("running...");
