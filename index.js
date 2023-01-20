@@ -25,10 +25,10 @@ const { WebSocketServer } = require("ws");
 
 const server = createServer({
   cert: readFileSync(
-    "/Users/zakaton/Documents/Github/collaborative-quest-pro/sec/server.crt"
+    "/Users/zakaton/Documents/Github/Ukaton-Mission-UDP-Server/sec/server.crt"
   ),
   key: readFileSync(
-    "/Users/zakaton/Documents/Github/collaborative-quest-pro/sec/server.key"
+    "/Users/zakaton/Documents/Github/Ukaton-Mission-UDP-Server/sec/server.key"
   ),
   passphrase: "12345",
 });
@@ -282,3 +282,5 @@ function ping() {
   }, 1000);
 }
 ping();
+
+console.log("running...");
