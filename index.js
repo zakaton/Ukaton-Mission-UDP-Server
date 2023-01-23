@@ -1,5 +1,4 @@
 const throttle = require("lodash/throttle");
-const buffer = require("buffer");
 
 let shouldLog = false;
 const log = (...args) => {
@@ -141,7 +140,7 @@ UDPMessageTypeStrings.forEach((udpMessageTypeString, index) => {
 const dgram = require("dgram");
 
 const PORT = 9999;
-const HOSTS = [
+const _HOSTS = [
   "192.168.6.22",
   "192.168.6.17",
   "192.168.6.23",
@@ -155,7 +154,27 @@ const HOSTS = [
   "192.168.6.19",
   "192.168.6.29",
 ];
-const missionDevices = HOSTS.map((HOST, index) => ({ HOST, index }));
+const HOSTS = [
+  "192.168.6.44",
+  //"192.168.6.45",
+  "192.168.6.48",
+  "192.168.6.38",
+  "192.168.6.49",
+  "192.168.6.34",
+  //"192.168.6.33",
+  "192.168.6.50",
+  "192.168.6.47",
+  "192.168.6.35",
+  "192.168.6.31",
+  "192.168.6.46",
+  "192.168.6.18",
+  "192.168.6.26",
+];
+const missionDevices = HOSTS.map((HOST, index) => ({
+  HOST,
+  index,
+  isConnected: false,
+}));
 const missionDevicesMap = {};
 missionDevices.forEach(
   (missionDevice) => (missionDevicesMap[missionDevice.HOST] = missionDevice)
@@ -273,7 +292,7 @@ function ping() {
     const data = missionDevice.receivedInformation ? pingData : informationData;
     client.send(data, PORT, missionDevice.HOST, function (error) {
       if (error) {
-        // log(error);
+        log(error);
       }
     });
   });
