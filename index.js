@@ -23,15 +23,10 @@ const { readFileSync } = require("fs");
 const { WebSocketServer } = require("ws");
 
 const server = createServer({
-  cert: readFileSync(
-    "/Users/zakaton/Documents/Github/Ukaton-Mission-UDP-Server/sec/server.crt"
-  ),
-  key: readFileSync(
-    "/Users/zakaton/Documents/Github/Ukaton-Mission-UDP-Server/sec/server.key"
-  ),
-  passphrase: "12345",
+  cert: readFileSync("./sec/server-cert.pem"),
+  key: readFileSync("./sec/server-key.pem"),
 });
-const wss = new WebSocketServer({ server });
+const wss = new WebSocketServer({ server, path: "/ws" });
 
 wss.on("connection", (ws) => {
   log("new client connected");
@@ -173,18 +168,18 @@ const __HOSTS = [
   "192.168.6.18", // rightFoot
 ];
 const HOSTS = [
-  "192.168.4.55",
-  "192.168.4.56",
-  "192.168.4.49",
-  "192.168.4.50",
-  "192.168.4.47",
-  "192.168.4.45",
-  "192.168.4.46",
-  "192.168.4.48",
-  "192.168.4.51",
-  "192.168.4.52",
-  "192.168.4.53",
-  "192.168.4.54",
+  "192.168.4.49", // upperTorso
+  "192.168.4.50", // lowerTorso
+  "192.168.4.47", // leftBicep
+  "192.168.4.45", // rightBicep
+  "192.168.4.46", // leftForearm
+  "192.168.4.48", // rightForearm
+  "192.168.4.51", // leftThigh
+  "192.168.4.52", // rightThigh
+  "192.168.4.53", // leftShin
+  "192.168.4.54", // rightShin
+  "192.168.4.55", // leftFoot
+  "192.168.4.56", // rightFoot
 ];
 const missionDevices = HOSTS.map((HOST, index) => ({
   HOST,
