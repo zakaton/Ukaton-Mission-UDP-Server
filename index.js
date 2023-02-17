@@ -22,11 +22,16 @@ const { createServer } = require("https");
 const { readFileSync } = require("fs");
 const { WebSocketServer } = require("ws");
 
+const index = readFileSync("./index.html");
+
 const server = createServer({
-  cert: readFileSync("./sec/server-cert.pem"),
-  key: readFileSync("./sec/server-key.pem"),
+  cert: readFileSync("./sec/cert.pem"),
+  key: readFileSync("./sec/key.pem"),
 });
-const wss = new WebSocketServer({ server, path: "/ws" });
+const wss = new WebSocketServer({ server, path: "/ws" }, (req, res) => {
+  res.writeHead(200);
+  res.end(index);
+});
 
 wss.on("connection", (ws) => {
   log("new client connected");
@@ -154,7 +159,7 @@ const __HOSTS = [
   "192.168.6.38", // lowerTorso
 
   "192.168.6.49", // leftBicep
-  "192.168.6.26", // leftForearm
+  "192.168.4.59", // leftForearm
 
   "192.168.6.34", // rightBicep
   "192.168.6.50", // rightForearm
