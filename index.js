@@ -177,7 +177,7 @@ const HOSTS = [
   "192.168.4.50", // lowerTorso
   "192.168.4.47", // leftBicep
   "192.168.4.45", // rightBicep
-  "192.168.4.46", // leftForearm
+  "192.168.4.59", // leftForearm
   "192.168.4.48", // rightForearm
   "192.168.4.51", // leftThigh
   "192.168.4.52", // rightThigh
