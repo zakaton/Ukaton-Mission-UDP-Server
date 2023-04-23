@@ -32,6 +32,9 @@ const wss = new WebSocketServer({ server, path: "/ws" }, (req, res) => {
   res.writeHead(200);
   res.end(index);
 });
+server.addListener("upgrade", (req, res, head) =>
+  console.log("UPGRADE:", req.url)
+);
 
 wss.on("connection", (ws) => {
   log("new client connected");
