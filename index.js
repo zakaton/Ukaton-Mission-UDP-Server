@@ -176,6 +176,10 @@ const __HOSTS = [
   "192.168.6.18", // rightFoot
 ];
 const HOSTS = [
+  "192.168.1.35", // TEST
+  "192.168.1.45", // TEST
+  "192.168.1.30",
+
   "192.168.4.49", // upperTorso
   "192.168.4.50", // lowerTorso
   "192.168.4.47", // leftBicep
